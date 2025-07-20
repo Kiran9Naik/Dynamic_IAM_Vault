@@ -1,0 +1,37 @@
+configuring the aws connection to the VAULT :
+for generating Temp IAM
+
+
+vault write aws/config/root \
+  access_key=<access_key> \
+  secret_key=<secret_key> \
+  region=ap-south-1
+I validated with:
+
+vault read aws/config/root
+
+create role with the attached policy to read/write on any service 
+
+# s3-policy.json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*"
+    }
+  ]
+}
+
+vault write aws/roles/s3-role \
+  credential_type=iam_user \
+  policy_document=@s3-policy.json \
+  ttl=3600 \
+
+
+vault read aws/creds/s3-role
+These credentials worked perfectly with:
+
+aws s3 ls
+✅ Confirmed: Access to S3 was working using short-lived IAM users!
