@@ -6,4 +6,4 @@ rotating/creating IAM roles through Vault
 Feel free to connect if you want help setting this up in your environment!
 #AWS #HashiCorpVault #CloudSecurity #IAM #DevSecOps #SecretsManagement #DevOps #SRE
  #Automation #CloudSecurity #KeyRotation  #InfrastructureAsCode #VaultAWSSecretsEngine #IncidentResponse
-![Uploading image.png…]()
+
